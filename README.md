@@ -92,7 +92,7 @@ foreach ($log in $windowsEventLogs) {
         $inputsConfContent += @"
 [WinEventLog://$log]
 index = windows_index
-host = \$HOST
+host = $hostname
 disabled = false
 
 "@
