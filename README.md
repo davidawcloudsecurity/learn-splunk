@@ -2,10 +2,11 @@
 # Define the paths to check
 $tableauLogPaths = @(
     "C:\ProgramData\Tableau\Tableau Server\logs",
-    "C:\ProgramData\Tableau\Tableau Server\data\tabsvc\logs\",
-    "C:\ProgramData\Tableau\Tableau Server\data\tabsvc\vizqlserver\Logs\"
+    "C:\ProgramData\Tableau\Tableau Server\data\tabsvc\logs",
+    "C:\ProgramData\Tableau\Tableau Server\data\tabsvc\vizqlserver\Logs"
 )
 $sftpLogPath = "C:\ProgramData\ssh\logs\"
+$windowsEventLogs = @("Application", "System", "Security")
 
 # Define the Splunk Universal Forwarder service name
 $splunkServiceName = "SplunkForwarder"
@@ -59,7 +60,8 @@ function Restart-SplunkService {
 foreach ($tableauLogPath in $tableauLogPaths) {
     if (Test-DirectoryExists -path $tableauLogPath -and Test-LogFilesExist -path $tableauLogPath) {
         $inputsConfContent += @"
-[monitor://$tableauLogPath*.log]
+
+[monitor://$tableauLogPath]
 sourcetype = tableau_server
 index = tableau_index
 host = $hostname
@@ -73,6 +75,7 @@ disabled = false
 # Validate SFTP log directory and files
 if (Test-DirectoryExists -path $sftpLogPath -and Test-LogFilesExist -path $sftpLogPath) {
     $inputsConfContent += @"
+
 [monitor://$sftpLogPath*.log]
 sourcetype = sftp_logs
 index = sftp_index
@@ -81,6 +84,21 @@ disabled = false
 "@
 } else {
     Write-Host "Skipping SFTP logs: No log files found in $sftpLogPath"
+}
+
+# Add Windows Event Logs configuration
+foreach ($log in $windowsEventLogs) {
+    if (Get-WinEvent -ListLog $log -ErrorAction SilentlyContinue) {
+        $inputsConfContent += @"
+[WinEventLog://$log]
+index = windows_index
+host = \$HOST
+disabled = false
+
+"@
+    } else {
+        Write-Host "Skipping Windows Event Log: $log does not exist"
+    }
 }
 
 # Check if there is any configuration to write
