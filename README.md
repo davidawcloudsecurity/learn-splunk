@@ -1,3 +1,9 @@
+### 4️⃣ Check All Active Configurations
+```powershell
+& "C:\Program Files\SplunkUniversalForwarder\bin\splunk.exe" btool check --debug
+```
+✅ This scans for misconfigurations or missing settings.
+
 ### 🛠 Example Troubleshooting Workflow
 Check forwarder status
 ```powershell
