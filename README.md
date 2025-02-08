@@ -1,3 +1,31 @@
+## Inputs.conf
+📄 Where to Find the Configuration?
+1️⃣ Check in Local Inputs Configuration
+The configuration will likely be in:
+
+plaintext
+Copy
+Edit
+C:\Program Files\SplunkUniversalForwarder\etc\system\local\inputs.conf
+or
+
+plaintext
+Copy
+Edit
+C:\Program Files\SplunkUniversalForwarder\etc\apps\SplunkUniversalForwarder\local\inputs.conf
+or
+
+plaintext
+Copy
+Edit
+C:\Program Files\SplunkUniversalForwarder\etc\apps\search\local\inputs.conf
+🔎 To verify, run:
+powershell
+Copy
+Edit
+& "C:\Program Files\SplunkUniversalForwarder\bin\splunk.exe" btool inputs list --debug | findstr vizqlserver
+✅ This will show the exact file where this monitoring input is stored.
+
 ## Understanding between local and apps for inputs.conf/output.conf
 #### apps\search\local\inputs.conf
 🔹 Scope:
