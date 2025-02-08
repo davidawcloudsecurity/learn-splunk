@@ -247,6 +247,7 @@ foreach ($log in $windowsEventLogs) {
 index = windows_index
 host = $hostname
 disabled = false
+evt_resolve_ad_obj = 0
 
 "@
     } else {
