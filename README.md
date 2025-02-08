@@ -1,8 +1,41 @@
+## 🔍 Splunk btool Debugging Commands
+### 1️⃣ Check Active Forwarding Configuration
+```powershell
+& "C:\Program Files\SplunkUniversalForwarder\bin\splunk.exe" btool outputs list --debug
+```
+✅ This shows which indexers (receivers) the Universal Forwarder (UF) is sending logs to.
+```bash
+Look for:
+
+server = <indexer>:9997
+disabled = false
+```
+### 2️⃣ Check Inputs Configuration (Log Collection)
+```powershell
+& "C:\Program Files\SplunkUniversalForwarder\bin\splunk.exe" btool inputs list --debug
+```
+✅ This helps confirm if Splunk is listening for logs from event logs, files, or other sources.
+### 3️⃣ Check Which Config File a Setting Comes From
+If you're unsure where a setting is being defined, use:
+```powershell
+& "C:\Program Files\SplunkUniversalForwarder\bin\splunk.exe" btool outputs list --debug | findstr server
+```
+✅ This shows the exact file where an indexer is configured.
 ### 4️⃣ Check All Active Configurations
 ```powershell
 & "C:\Program Files\SplunkUniversalForwarder\bin\splunk.exe" btool check --debug
 ```
 ✅ This scans for misconfigurations or missing settings.
+### 5️⃣ Find Configurations Overwritten by Other Files
+If a setting is being overridden, use:
+```powershell
+& "C:\Program Files\SplunkUniversalForwarder\bin\splunk.exe" btool <config_file> list --debug
+```
+Example:
+```powershell
+& "C:\Program Files\SplunkUniversalForwarder\bin\splunk.exe" btool props list --debug
+```
+✅ This shows how settings are inherited across different .conf files.
 
 ### 🛠 Example Troubleshooting Workflow
 Check forwarder status
