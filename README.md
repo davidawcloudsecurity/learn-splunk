@@ -1,5 +1,15 @@
 ## Understanding between local and apps for inputs.conf/output.conf
-apps\search\local\inputs.conf
+#### apps\search\local\inputs.conf
+🔹 Scope:
+
+This file is part of the Search app (search).
+It affects only searches and dashboards within the Search app.
+Used for app-specific configurations (e.g., setting up monitoring for logs specific to the Search app).
+
+🔹 Usage:
+
+If an input is defined here, it applies only when using the Search app.
+If another app has its own inputs.conf, this app’s settings won’t override them unless it has higher precedence.
 
 #### etc\system\local\inputs.conf
 🔹 Scope:
