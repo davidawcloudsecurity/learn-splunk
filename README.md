@@ -1,3 +1,28 @@
+## Understanding between local and apps for inputs.conf/output.conf
+apps\search\local\inputs.conf
+
+etc\system\local\inputs.conf
+🔹 Scope:
+
+This is a global configuration file for Splunk.
+Highest precedence—settings here override all other inputs.conf files.
+Used for system-wide configurations (e.g., monitoring log files that all apps should see).
+🔹 Usage:
+
+If an input is defined here, it overrides inputs from any app (apps\search, apps\SplunkUniversalForwarder, etc.).
+Typically used for global log monitoring and universal configurations.
+
+## Troubleshooting
+### Windows
+```bash
+"C:\Program Files\SplunkUniversalForwarder\bin\splunk.exe" restart
+```
+Network
+```bash
+netstat -ano | findstr ":8000"
+netstat -ano | findstr ":8089"
+```
+### Powershell command to add the following to inputs.conf in local
 ```bash
 # Define the Tableau log paths to check
 $tableauLogPaths = @(
