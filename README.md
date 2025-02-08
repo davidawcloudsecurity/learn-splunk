@@ -81,11 +81,10 @@ function Restart-SplunkService {
     }
 }
 
-# Validate Tableau log directories and files
+# Validate Tableau log directories
 foreach ($tableauLogPath in $tableauLogPaths) {
     if (Test-DirectoryExists -path $tableauLogPath) {
-        if (Test-LogFilesExist -path $tableauLogPath) {
-            $inputsConfContent += @"
+        $inputsConfContent += @"
 [monitor://$tableauLogPath]
 sourcetype = tableau_server
 index = tableau_index
@@ -93,9 +92,6 @@ host = $hostname
 disabled = false
 
 "@
-        } else {
-            Write-Host "Skipping Tableau logs: No log files found in $tableauLogPath"
-        }
     } else {
         Write-Host "Skipping Tableau logs: Directory does not exist - $tableauLogPath"
     }
