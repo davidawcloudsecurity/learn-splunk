@@ -1,3 +1,13 @@
+### Inputs
+```bash
+[tcpout]
+defaultGroup = default-autolb-group
+
+[tcpout:default-autolb-group]
+server = 192.168.12.200:9997
+
+[tcpout-server://192.168.12.200:9997]
+```
 ## 🔍 Splunk btool Debugging Commands
 ### 1️⃣ Check Active Forwarding Configuration
 ```powershell
