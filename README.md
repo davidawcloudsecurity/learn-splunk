@@ -2,6 +2,7 @@
 apps\search\local\inputs.conf
 
 etc\system\local\inputs.conf
+
 🔹 Scope:
 
 This is a global configuration file for Splunk.
