@@ -1,13 +1,13 @@
 ## Understanding between local and apps for inputs.conf/output.conf
 apps\search\local\inputs.conf
 
-etc\system\local\inputs.conf
-
+#### etc\system\local\inputs.conf
 🔹 Scope:
 
 This is a global configuration file for Splunk.
 Highest precedence—settings here override all other inputs.conf files.
 Used for system-wide configurations (e.g., monitoring log files that all apps should see).
+
 🔹 Usage:
 
 If an input is defined here, it overrides inputs from any app (apps\search, apps\SplunkUniversalForwarder, etc.).
