@@ -1,3 +1,24 @@
+### 🛠 Example Troubleshooting Workflow
+Check forwarder status
+```powershell
+& "C:\Program Files\SplunkUniversalForwarder\bin\splunk.exe" list forward-server
+```
+Check outputs (indexer connections)
+```powershell
+& "C:\Program Files\SplunkUniversalForwarder\bin\splunk.exe" btool outputs list --debug
+```
+Verify inputs (log sources)
+```powershell
+& "C:\Program Files\SplunkUniversalForwarder\bin\splunk.exe" btool inputs list --debug
+```
+Check logs for errors
+```powershell
+Get-Content "C:\Program Files\SplunkUniversalForwarder\var\log\splunk\splunkd.log" -Tail 50 -Wait
+```
+Restart Splunk with Debugging
+```powershell
+& "C:\Program Files\SplunkUniversalForwarder\bin\splunk.exe" restart --debug
+```
 ## Inputs.conf
 📄 Where to Find the Configuration?
 
