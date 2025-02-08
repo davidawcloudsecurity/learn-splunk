@@ -103,7 +103,14 @@ Used for system-wide configurations (e.g., monitoring log files that all apps sh
 
 If an input is defined here, it overrides inputs from any app (apps\search, apps\SplunkUniversalForwarder, etc.).
 Typically used for global log monitoring and universal configurations.
-
+## Loop splunkd.log
+```powershell
+while ($true) {
+    Clear-Host
+    Get-Content "C:\program files\SplunkUniversalForwarder\var\log\splunk\splunkd.log" -tail 10
+    Start-Sleep -Seconds 2
+}
+```
 ## Troubleshooting
 ### Windows
 ```bash
