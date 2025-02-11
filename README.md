@@ -1,4 +1,4 @@
-### Inputs
+### Outputs
 ```bash
 [tcpout]
 defaultGroup = default-autolb-group
@@ -7,6 +7,36 @@ defaultGroup = default-autolb-group
 server = 192.168.12.200:9997
 
 [tcpout-server://192.168.12.200:9997]
+```
+### Inputs
+```bash
+###### OS Logs ######
+[WinEventLog://Application]
+disabled = 0
+index = htx-aws
+start_from = oldest
+current_only = 0
+checkpointInterval = 5
+renderXml=0
+
+[WinEventLog://Security]
+disabled = 0
+index = htx-aws
+start_from = oldest
+current_only = 0
+evt_resolve_ad_obj = 1
+checkpointInterval = 5
+blacklist1 = EventCode="4662" Message="Object Type:(?!\s*groupPolicyContainer)"
+blacklist2 = EventCode="566" Message="Object Type:(?!\s*groupPolicyContainer)"
+renderXml=0
+
+[WinEventLog://System]
+disabled = 0
+index = htx-aws
+start_from = oldest
+current_only = 0
+checkpointInterval = 5
+renderXml=0
 ```
 ## 🔍 Splunk btool Debugging Commands
 ### 1️⃣ Check Active Forwarding Configuration
