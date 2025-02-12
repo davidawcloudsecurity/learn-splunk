@@ -1,3 +1,22 @@
+## Troubleshooting
+### Loop splunkd.log
+```powershell
+while ($true) {
+    Clear-Host
+    Get-Content "C:\program files\SplunkUniversalForwarder\var\log\splunk\splunkd.log" -tail 10
+    Start-Sleep -Seconds 2
+}
+```
+### Windows
+```bash
+"C:\Program Files\SplunkUniversalForwarder\bin\splunk.exe" restart
+"C:\Program Files\SplunkUniversalForwarder\bin\splunk.exe" list forward-server
+```
+Network
+```bash
+netstat -ano | findstr ":8000"
+netstat -ano | findstr ":8089"
+```
 ### Outputs
 ```bash
 [tcpout]
@@ -143,24 +162,7 @@ Used for system-wide configurations (e.g., monitoring log files that all apps sh
 
 If an input is defined here, it overrides inputs from any app (apps\search, apps\SplunkUniversalForwarder, etc.).
 Typically used for global log monitoring and universal configurations.
-## Loop splunkd.log
-```powershell
-while ($true) {
-    Clear-Host
-    Get-Content "C:\program files\SplunkUniversalForwarder\var\log\splunk\splunkd.log" -tail 10
-    Start-Sleep -Seconds 2
-}
-```
-## Troubleshooting
-### Windows
-```bash
-"C:\Program Files\SplunkUniversalForwarder\bin\splunk.exe" restart
-```
-Network
-```bash
-netstat -ano | findstr ":8000"
-netstat -ano | findstr ":8089"
-```
+
 ### Powershell command to add the following to inputs.conf in local
 ```bash
 # Define the Tableau log paths to check
