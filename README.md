@@ -1,4 +1,10 @@
 ## Troubleshooting
+### Disable mgmt
+```bash
+# Disable management port to prevent remote (or local) config.
+[httpServer]
+disableDefaultPort = true
+```
 ### Loop splunkd.log
 ```powershell
 while ($true) {
