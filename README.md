@@ -37,6 +37,7 @@ start_from = oldest
 current_only = 0
 checkpointInterval = 5
 renderXml=0
+host=<changeme>
 
 [WinEventLog://Security]
 disabled = 0
@@ -48,6 +49,7 @@ checkpointInterval = 5
 blacklist1 = EventCode="4662" Message="Object Type:(?!\s*groupPolicyContainer)"
 blacklist2 = EventCode="566" Message="Object Type:(?!\s*groupPolicyContainer)"
 renderXml=0
+host=<changeme>
 
 [WinEventLog://System]
 disabled = 0
@@ -56,6 +58,7 @@ start_from = oldest
 current_only = 0
 checkpointInterval = 5
 renderXml=0
+host=<changeme>
 ```
 ## 🔍 Splunk btool Debugging Commands
 ### 1️⃣ Check Active Forwarding Configuration
