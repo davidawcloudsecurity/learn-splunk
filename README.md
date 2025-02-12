@@ -9,8 +9,8 @@ while ($true) {
 ```
 ### Windows
 ```bash
-"C:\Program Files\SplunkUniversalForwarder\bin\splunk.exe" restart
-"C:\Program Files\SplunkUniversalForwarder\bin\splunk.exe" list forward-server
+C:\"Program Files"\SplunkUniversalForwarder\bin\splunk.exe restart
+C:\"Program Files"\SplunkUniversalForwarder\bin\splunk.exe list forward-server
 ```
 Network
 ```bash
