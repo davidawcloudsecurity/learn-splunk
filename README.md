@@ -32,7 +32,7 @@ server = 192.168.12.200:9997
 ###### OS Logs ######
 [WinEventLog://Application]
 disabled = 0
-index = htx-aws
+index=<changeme>
 start_from = oldest
 current_only = 0
 checkpointInterval = 5
@@ -41,7 +41,7 @@ host=<changeme>
 
 [WinEventLog://Security]
 disabled = 0
-index = htx-aws
+index=<changeme>
 start_from = oldest
 current_only = 0
 evt_resolve_ad_obj = 1
@@ -53,7 +53,7 @@ host=<changeme>
 
 [WinEventLog://System]
 disabled = 0
-index = htx-aws
+index=<changeme>
 start_from = oldest
 current_only = 0
 checkpointInterval = 5
